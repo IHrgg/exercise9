@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 mongoose.set('useFindAndModify', false);
 
 const servers = {
-  primary: "exercise8_mongodb_message_1:27027",
-  replica: "exercise8_replica_message_1:27028"
+  primary: "exercise9_mongodb_message_1:27027",
+  replica: "exercise9_replica_message_1:27028"
   //primary: "mongodb_message:27027",
   //replica: "replica_message:27028"
   //primary: "127.0.0.1:27027",

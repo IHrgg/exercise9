@@ -8,6 +8,7 @@ const {
 const getMessages = require("./src/controllers/getMessages");
 const getMessageStatus = require("./src/controllers/getMessageStatus");
 const checkHealth = require('./src/controllers/checkHealth');
+//const checkVersion = require('./src/controllers/checkVersion');
 const { checkCredit } = require("./src/queue/queue");
 
 const app = express();
@@ -50,6 +51,7 @@ app.post(
 app.get("/messages", getMessages);
 app.get("/message/:messageId/status", getMessageStatus);
 app.get('/health', checkHealth);
+//app.get('/version', checkVersion);
 
 app.use(function(err, req, res, next) {
   console.log(res.body);

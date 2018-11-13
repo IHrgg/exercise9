@@ -4,8 +4,10 @@ services:
 services:
   message1:
     build: message/
+    deploy:
+      replicas: 5
     ports:
-      - "9007:9007"
+      - "9007"
     links:
       - messageapp
       - mongodb_message
@@ -19,8 +21,11 @@ services:
       - redis
     environment:
       - PORT=9007
+      - SERVICE_NAME=service-v1
   message2:
     build: message/
+    deploy:
+      replicas: 1
     ports:
       - "9008:9008"
     links:
@@ -36,6 +41,7 @@ services:
       - redis
     environment:
       - PORT=9008
+      - SERVICE_NAME=service-v2
   credit:
     build: credit/
     ports:
@@ -94,8 +100,6 @@ services:
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock
     command: -internal consul://consul:8500
-    depends_on:
-      - consul
     links:
       - consul
   
@@ -105,8 +109,6 @@ services:
 
   balancer:
     image: haproxy:1.8-alpine
-    depends_on:
-      - registrator
     links:
       - registrator
     volumes: 
@@ -114,3 +116,6 @@ services:
     ports:
       - 48151:48151
 
+    
+
+  
