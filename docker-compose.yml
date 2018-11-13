@@ -27,7 +27,7 @@ services:
     deploy:
       replicas: 1
     ports:
-      - "9008:9007"
+      - "9008"
     links:
       - messageapp
       - mongodb_message

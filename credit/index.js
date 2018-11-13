@@ -10,7 +10,6 @@ const getCredit = require("./src/controllers/getCredit");
 const app = express();
 const port = 9017
 
-
 const validator = new Validator({ allErrors: true });
 const { validate } = validator;
 require ('./src/queue/queue');

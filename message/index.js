@@ -1,4 +1,3 @@
-const http = require("http");
 const express = require("express");
 const bodyParser = require("body-parser");
 const {
@@ -12,7 +11,6 @@ const { checkCredit } = require("./src/queue/queue");
 
 const app = express();
 const port = process.env.PORT;
-
 
 const validator = new Validator({ allErrors: true });
 const { validate } = validator;

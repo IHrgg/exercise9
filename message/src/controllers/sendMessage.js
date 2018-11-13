@@ -3,7 +3,6 @@ const saveMessage = require("../clients/saveMessage");
 
 const random = n => Math.floor(Math.random() * Math.floor(n));
 
-
 module.exports = function (messgBody) {
 
 	const newPromise = Promise.resolve(function () {

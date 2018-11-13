@@ -16,7 +16,7 @@ const checkCredit = (req, res, next) => {
     return creditQueue
         .add({ destination, body, messageId, status: "PENDING", location: { cost: messagePrice, name: 'Default' } })
         .then(() => jobsNumber(creditQueue))
-        .then(() => res.status(200).send(`Check status of message ${messageId}`))
+        .then(() => res.status(200).send(`{"message status": http://localhost:9006/message/${messageId}/status`))
         .then(() => saveMessage({
             ...req.body,
             status: "PENDING",
@@ -58,21 +58,3 @@ messageQueue.process(async (job, done) => {
 });
 
 module.exports = { checkCredit, rollbackCharge };
-
-/* const Queue = require("bull");
-const queue = new Queue("message", "redis://127.0.0.1:6379");
-const uuidv1 = require("uuid/v1");
-const sendMessage = require("../controllers/sendMessage");
-const createMessage = require("../controllers/createMessage");
-
-module.exports = (req, res) => {
-  let message = req.body;
-  message.uuid = uuidv1();
-
-  Promise.resolve(createMessage(message)).then(() => {
-    queue.add(message).then(job => {
-      res.end(`{"message status": http://localhost:9006/message/${message.uuid}/status`);
-      sendMessage(body)
-    });
-  });
-}; */

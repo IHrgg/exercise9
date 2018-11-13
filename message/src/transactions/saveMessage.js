@@ -1,7 +1,6 @@
 const database = require("../database");
 const Message = require("../models/message");
 const { cleanClone } = require("../utils");
-
 const _ = require("lodash");
 
 function saveMessageReplica(replica, retries) {
