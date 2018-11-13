@@ -8,13 +8,10 @@ const {
 const getMessages = require("./src/controllers/getMessages");
 const getMessageStatus = require("./src/controllers/getMessageStatus");
 const checkHealth = require('./src/controllers/checkHealth');
-//const checkVersion = require('./src/controllers/checkVersion');
 const { checkCredit } = require("./src/queue/queue");
 
 const app = express();
 const port = process.env.PORT;
-console.log("PORTENV:", port)
-//const port = 9007;
 
 
 const validator = new Validator({ allErrors: true });
@@ -51,7 +48,9 @@ app.post(
 app.get("/messages", getMessages);
 app.get("/message/:messageId/status", getMessageStatus);
 app.get('/health', checkHealth);
-//app.get('/version', checkVersion);
+app.get('/version', function (req, res, next) {
+  res.status(200).send("version V2")
+});
 
 app.use(function(err, req, res, next) {
   console.log(res.body);
