@@ -27,7 +27,7 @@ services:
     deploy:
       replicas: 1
     ports:
-      - "9008"
+      - "9007"
     links:
       - messageapp
       - mongodb_message
@@ -40,7 +40,7 @@ services:
       - replica_message
       - redis
     environment:
-      - PORT=9008
+      - PORT=9007
       - SERVICE_NAME=service-v2
   credit:
     build: credit/
